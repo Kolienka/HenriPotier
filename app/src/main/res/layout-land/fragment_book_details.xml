@@ -1,10 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/book_details_border"
     >
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/coverView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </FrameLayout>
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline"
+        >
+    <LinearLayout
+        android:id="@+id/right_part"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
     <TextView
         android:id="@+id/title_header"
         android:layout_width="wrap_content"
@@ -13,7 +48,7 @@
         android:textStyle="bold"
         android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -23,19 +58,9 @@
         android:text="Title"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/title_header" />
 
-    <ImageView
-        android:id="@+id/coverView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher_foreground"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titleView"
-        />
     <TextView
         android:id="@+id/synopsis_header"
         android:layout_width="wrap_content"
@@ -43,18 +68,18 @@
         android:text="@string/book_synopsis_header"
         android:textStyle="bold"
         android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/coverView" />
+        app:layout_constraintTop_toBottomOf="@id/titleView" />
 
     <ScrollView
         android:id="@+id/synopsis_scrollView"
-        android:layout_width="wrap_content"
-        android:layout_height="250dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
         android:layout_marginTop="10dp"
         android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/synopsis_header">
 
         <TextView
@@ -73,8 +98,9 @@
         android:textStyle="bold"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/synopsis_scrollView" />
+
     <TextView
         android:id="@+id/priceView"
         android:layout_width="wrap_content"
@@ -82,26 +108,16 @@
         android:text="price"
         android:layout_marginTop="1dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/price_header" />
-
-    <LinearLayout
-        android:id="@+id/quantity_section"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        app:layout_constraintTop_toBottomOf="@id/priceView">
     </LinearLayout>
-
-    <Button
-        android:id="@+id/add_to_basket"
+    </ScrollView>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/quantity_section"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginLeft="5dp"
-        android:text="@string/add_to_basket"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3"
         />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

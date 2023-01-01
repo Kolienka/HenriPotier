@@ -1,6 +1,7 @@
 package com.example.henripotier.fragments
 
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -36,14 +37,20 @@ class BookList : Fragment(), BookAdapter.OnBookClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_list_books,container,false)
+        val view = inflater.inflate(R.layout.fragment_list_books, container, false)
         recyclerView = view.findViewById(R.id.recycleView)
         val recycleView = view.findViewById<RecyclerView>(R.id.recycleView)
+        val orientation = if(context?.resources?.configuration?.orientation == Configuration.ORIENTATION_PORTRAIT){
+            LinearLayoutManager.HORIZONTAL
+        }else{
+            LinearLayoutManager.VERTICAL
+        }
         recycleView.layoutManager = LinearLayoutManager(
             context,
-            LinearLayoutManager.HORIZONTAL,
+            orientation,
             false
         )
+
         viewModel.state.observe(viewLifecycleOwner) { state ->
             recycleView.adapter = BookAdapter(state.books,this)
         }
