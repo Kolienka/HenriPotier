@@ -9,26 +9,25 @@ import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-data class LibraryState(
-    val books: List<Book> = emptyList(),
-    val isLoading: Boolean
-)
+class BookViewModel : ViewModel() {
 
-class LibraryViewModel : ViewModel() {
+    val state = MutableLiveData<BookState>()
 
-    fun loadBooks(){
-        val retrofit = Retrofit.Builder()
+    private fun getRetrofit() : Retrofit{
+        return Retrofit.Builder()
             .baseUrl("https://henri-potier.techx.fr")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-        val service : Service = retrofit.create(Service::class.java)
-        state.postValue(LibraryState(emptyList(), true))
+    }
+
+    fun loadBooks(){
+        val service : Service = getRetrofit().create(Service::class.java)
+        state.postValue(BookState(emptyList(), true))
         viewModelScope.launch(context = Dispatchers.Main){
             val books = withContext(Dispatchers.IO){
                 service.books()
             }
-            state.postValue(LibraryState(books,false))
+            state.postValue(BookState(books,false))
         }
     }
-    val state = MutableLiveData<LibraryState>()
 }

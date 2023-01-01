@@ -1,6 +1,5 @@
-package com.example.henripotier.fragments
+package com.example.henripotier.library.fragments
 
-import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,13 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.NumberPicker
 import android.widget.TextView
-import android.widget.Toast
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import com.example.henripotier.Book
+import com.example.henripotier.models.Book
 import com.example.henripotier.R
 import com.squareup.picasso.Picasso
 
@@ -25,9 +20,6 @@ class BookDetails : Fragment(){
     private lateinit var synopsisView : TextView
     private lateinit var coverView : ImageView
     private lateinit var buttonView : Button
-    private lateinit var quantityPicker : NumberPicker
-
-    private val confirmationDialog = Confirmation()
 
     private lateinit var listener : AddToBasketListener
 
@@ -77,10 +69,6 @@ class BookDetails : Fragment(){
     interface  AddToBasketListener{
         fun onBasketAddition(book: Book)
     }
-}
-
-interface GetQuantityListener{
-    fun onQuantityPassed(n: Int)
 }
 
 

@@ -1,13 +1,12 @@
-package com.example.henripotier
+package com.example.henripotier.library
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.NonDisposableHandle.parent
+import com.example.henripotier.R
+import com.example.henripotier.models.Book
 
 class BookAdapter(private val books: List<Book>, private val listener : OnBookClickListener) :
     RecyclerView.Adapter<BookAdapter.BookViewHolder>() {

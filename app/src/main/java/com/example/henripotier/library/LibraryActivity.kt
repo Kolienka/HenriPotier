@@ -1,15 +1,15 @@
-package com.example.henripotier
+package com.example.henripotier.library
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Toast
-import androidx.activity.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.henripotier.fragments.BookDetails
-import com.example.henripotier.fragments.BookList
+import com.example.henripotier.models.Book
+import com.example.henripotier.R
+import com.example.henripotier.basket.BasketActivity
+import com.example.henripotier.basket.BasketActivity.Companion.BASKET
+import com.example.henripotier.library.fragments.BookDetails
+import com.example.henripotier.library.fragments.BookList
 
 class LibraryActivity : AppCompatActivity(), BookDetails.AddToBasketListener, BookList.Listener {
 
@@ -26,7 +26,8 @@ class LibraryActivity : AppCompatActivity(), BookDetails.AddToBasketListener, Bo
         setContentView(R.layout.activity_library)
         basketButton = findViewById(R.id.basket_button)
         basketButton.setOnClickListener {
-            val intent : Intent = Intent(this,LibraryActivity::class.java)
+            val intent = Intent(this@LibraryActivity, BasketActivity::class.java)
+            intent.putParcelableArrayListExtra(BASKET,basket)
             startActivity(intent)
         }
         supportFragmentManager
@@ -42,6 +43,5 @@ class LibraryActivity : AppCompatActivity(), BookDetails.AddToBasketListener, Bo
 
     override fun onBasketAddition(book: Book){
         basket.add(book)
-        println(basket)
     }
 }

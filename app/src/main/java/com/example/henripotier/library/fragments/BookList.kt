@@ -1,4 +1,4 @@
-package com.example.henripotier.fragments
+package com.example.henripotier.library.fragments
 
 import android.content.Context
 import android.content.res.Configuration
@@ -6,20 +6,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.henripotier.Book
-import com.example.henripotier.BookAdapter
-import com.example.henripotier.LibraryViewModel
+import com.example.henripotier.models.Book
+import com.example.henripotier.library.BookAdapter
+import com.example.henripotier.BookViewModel
 import com.example.henripotier.R
 
 class BookList : Fragment(), BookAdapter.OnBookClickListener {
 
-    private val viewModel by viewModels<LibraryViewModel>()
+    private val viewModel by viewModels<BookViewModel>()
 
     private lateinit var recyclerView : RecyclerView
     private lateinit var listener : Listener
@@ -38,7 +36,6 @@ class BookList : Fragment(), BookAdapter.OnBookClickListener {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_list_books, container, false)
-        recyclerView = view.findViewById(R.id.recycleView)
         val recycleView = view.findViewById<RecyclerView>(R.id.recycleView)
         val orientation = if(context?.resources?.configuration?.orientation == Configuration.ORIENTATION_PORTRAIT){
             LinearLayoutManager.HORIZONTAL
