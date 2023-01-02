@@ -19,7 +19,6 @@ class BookList : Fragment(), BookAdapter.OnBookClickListener {
 
     private val viewModel by viewModels<BookViewModel>()
 
-    private lateinit var recyclerView : RecyclerView
     private lateinit var listener : Listener
 
     override fun onAttach(context: Context) {
