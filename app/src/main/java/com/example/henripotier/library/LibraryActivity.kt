@@ -41,6 +41,11 @@ class LibraryActivity : AppCompatActivity(), BookDetails.AddToBasketListener, Bo
         bookDetails.updateBook(book)
     }
 
+    override fun booksLoaded(book: Book) {
+        bookDetails.updateBook(book)
+    }
+
+
     override fun onBasketAddition(book: Book){
         basket.add(book)
     }

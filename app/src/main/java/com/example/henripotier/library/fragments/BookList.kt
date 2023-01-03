@@ -49,6 +49,8 @@ class BookList : Fragment(), BookAdapter.OnBookClickListener {
 
         viewModel.state.observe(viewLifecycleOwner) { state ->
             recycleView.adapter = BookAdapter(state.books,this)
+            if (state.books.isNotEmpty())
+                listener.booksLoaded(state.books.first())
         }
         viewModel.loadBooks()
         return view
@@ -60,5 +62,6 @@ class BookList : Fragment(), BookAdapter.OnBookClickListener {
 
     interface Listener{
         fun clickOnBook(book: Book)
+        fun booksLoaded(book: Book)
     }
 }
