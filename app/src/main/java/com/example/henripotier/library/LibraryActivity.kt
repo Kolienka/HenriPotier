@@ -47,6 +47,7 @@ class LibraryActivity : AppCompatActivity(), BookDetails.AddToBasketListener, Bo
 
 
     override fun onBasketAddition(book: Book){
-        basket.add(book)
+        if(!basket.contains(book))
+            basket.add(book)
     }
 }
