@@ -1,4 +1,4 @@
-package com.example.henripotier
+package com.example.henripotier.library
 
 import com.example.henripotier.models.Book
 

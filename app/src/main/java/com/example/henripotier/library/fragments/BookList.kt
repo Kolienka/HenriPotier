@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.henripotier.models.Book
 import com.example.henripotier.library.BookAdapter
-import com.example.henripotier.BookViewModel
+import com.example.henripotier.library.BookViewModel
 import com.example.henripotier.R
 
 class BookList : Fragment(), BookAdapter.OnBookClickListener {

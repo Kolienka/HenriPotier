@@ -1,18 +1,9 @@
 package com.example.henripotier.basket
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.AttributeSet
-import android.view.View
-import android.widget.LinearLayout
-import androidx.activity.viewModels
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
-import com.example.henripotier.BookViewModel
 import com.example.henripotier.R
 import com.example.henripotier.models.Book
 

@@ -56,7 +56,7 @@ class BookDetails : Fragment(){
             .into(coverView)
         titleView.text = book.title
         priceView.text = book.price.toString() + " €"
-        var synopsis = StringBuilder()
+        val synopsis = StringBuilder()
         for(paragraph in book.synopsis){
             synopsis.append(paragraph)
             synopsis.append("\n")

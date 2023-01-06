@@ -18,12 +18,10 @@ class BasketAdapter(private val basket: List<Book>) : RecyclerView.Adapter<Baske
         val coverView: ImageView = basketView.findViewById(R.id.item_cover_view)
         val titleView: TextView = basketView.findViewById(R.id.item_title)
         val originalPriceView: TextView = basketView.findViewById(R.id.original_price)
-        val offerPriceView: TextView = basketView.findViewById(R.id.offer_price)
         val quantityView: TextView = basketView.findViewById(R.id.quantity_value)
         val minusButton: Button = basketView.findViewById(R.id.minus_button)
         val plusButton: Button = basketView.findViewById(R.id.plus_button)
 
-        var newPrice: Int = quantityView.text.toString().toInt()
         var quantity: Int = quantityView.text.toString().toInt()
     }
 
@@ -43,19 +41,16 @@ class BasketAdapter(private val basket: List<Book>) : RecyclerView.Adapter<Baske
             if (holder.quantity > 0) {
                 holder.quantity--
                 holder.originalPriceView.text = "Prix de base : " + (book.price*holder.quantity).toString() + " €"
-                holder.offerPriceView.text = "Prix avec réduction : " + (book.price*holder.quantity) + "€"
                 holder.quantityView.text = holder.quantity.toString()
             }
         }
         holder.plusButton.setOnClickListener{
             holder.quantity++
             holder.originalPriceView.text = "Prix de base : " + (book.price*holder.quantity).toString() + " €"
-            holder.offerPriceView.text = "Prix avec réduction : " + (book.price*holder.quantity) + "€"
             holder.quantityView.text = holder.quantity.toString()
         }
         holder.titleView.text = book.title
         holder.originalPriceView.text = "Prix de base : " + (book.price*holder.quantity).toString() + " €"
-        holder.offerPriceView.text = "Prix avec réduction : " + (book.price*holder.quantity) + "€"
     }
 
     override fun getItemCount(): Int = basket.size
